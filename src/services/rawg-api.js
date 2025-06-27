@@ -13,15 +13,28 @@ http.interceptors.response.use(
   (response) => response.data
 )
 
+export function getGame(slug) {
+  return Promise.all([
+    http.get(`/games/${slug}`),
+    http.get(`/games/${slug}/movies`),
+  ]).then(([game, movies ]) => {
+    return {
+      ...parseGame(game)
+    }
+  })
+}
+
 const parseGame = (game) => {
   return {
     id: game.id,
     name: game.name,
+    slug: game.slug,
     released: game.released,
     bgImage: game.background_image,
     rating: game.rating,
     ratingsCount: game.ratings_count,
-    platforms: game.platforms
+    platforms: game.platforms,
+    stores: game.stores
   }
 }
 
