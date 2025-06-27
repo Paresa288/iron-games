@@ -1,7 +1,7 @@
 
 function Footer() {
   return (
-    <div className="bg-secondary" style={{ height: "100px"}}></div>
+    <div className="bg-dark" style={{ height: "100px"}}></div>
   );
 }
 

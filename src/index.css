@@ -1,0 +1,17 @@
+body {
+  font-family: "Oswald", "Roboto", sans-serif;
+}
+
+#game-card {
+  background-color: rgb(62, 71, 71);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+}
+
+#game-card > img {
+  min-height: 10em;
+  max-height: 10em;
+}
+

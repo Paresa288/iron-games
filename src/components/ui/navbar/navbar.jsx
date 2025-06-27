@@ -3,7 +3,7 @@ import NavbarTop from "./navbar-top";
 
 function Navbar() {
   return (
-    <div className="d-flex flex-column bg-secondary">
+    <div className="d-flex flex-column text-bg-dark">
       <NavbarTop />
       <NavBarBottom />
     </div>

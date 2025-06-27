@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import * as RAWGApi from "../../../services/rawg-api"
 import GameItem from "../game-item/game-item";
+
 function GamesList() {
   const [games, setGames] = useState(null);
 
@@ -13,13 +14,14 @@ function GamesList() {
   if(!games) {
     return (<>Loading...</>);
   } else {
+    console.log(games)
     return (
       <div className="row g-2">
-        {games.map((game) => {
+        {games.map((game) => (
           <div key={`${game.id}`} className="col">
             <GameItem game={game} />
           </div>
-        })}
+        ))}
       </div>
     )
   }
