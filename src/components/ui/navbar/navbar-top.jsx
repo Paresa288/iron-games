@@ -4,7 +4,7 @@ import { PageLayout } from "../../layouts";
 function NavbarTop() {
   return (
     <PageLayout>
-      <div className="d-flex justify-content-between">
+      <div className="d-flex justify-content-between nav-container">
         <ul className="list-group list-group-flush">
           <li className="list-group-item border border-0 bg-transparent">
             <Link to="/" className="btn  text-light">Iron Games</Link>

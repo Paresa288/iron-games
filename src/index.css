@@ -15,3 +15,14 @@ body {
   max-height: 10em;
 }
 
+.nav-container ul:first-child,
+.nav-container ul:first-child li:first-child,
+.nav-container ul:first-child li:first-child a {
+  padding-left: 0;
+}
+
+.nav-container ul:last-child,
+.nav-container ul:last-child li:last-child,
+.nav-container ul:last-child li:last-child a {
+  padding-right: 0;
+}
