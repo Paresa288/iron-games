@@ -8,7 +8,7 @@ function GameItem({ game }) {
         <div className="card-body">
           {game.platforms.length != 0 && (
             <div className="d-flex gap-2 mb-1">
-              {game.platforms.map(({ platform: { name } }) => (
+              {game.platforms.map(( { name }) => (
                 <img key={name}  src={platformToIcon(name)} alt={name} height={15}></img>
               ))}
             </div>

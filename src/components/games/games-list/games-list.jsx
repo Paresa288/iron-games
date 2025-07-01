@@ -14,7 +14,6 @@ function GamesList() {
   if(!games) {
     return (<>Loading...</>);
   } else {
-    console.log(games)
     return (
       <div className="row g-2">
         {games.map((game) => (

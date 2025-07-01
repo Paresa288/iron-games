@@ -8,7 +8,6 @@ import * as RAWGApi  from "../services/rawg-api.js";
 function GameDetailsPage() {
   const { gameSlug } = useParams(); 
   const [game, setGame] = useState();
-
   useEffect(() => {
     RAWGApi.getGame(gameSlug)
       .then((game) => setGame(game))
@@ -18,7 +17,6 @@ function GameDetailsPage() {
   if(!game) {
     return <>Loading...</>
   } else {
-    console.log(game)
     return (
       <PageLayout>
         <GameDetails game={game}/>

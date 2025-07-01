@@ -1,9 +1,4 @@
-import linuxIcon from "../assets/images/platforms/linux.svg"
-import nintendoIcon from "../assets/images/platforms/nintendo.svg"
-import playstationIcon from "../assets/images/platforms/playstation.svg"
-import windowsIcon from "../assets/images/platforms/windowsPC.svg"
-import xboxIcon from "../assets/images/platforms/xbox.svg"
-
+import { linuxIcon, nintendoIcon, playstationIcon, windowsIcon, xboxIcon } from "../assets/images/platforms"
 
 export function platformToIcon(platform) {
   platform = platform.toLowerCase();
@@ -16,3 +11,6 @@ export function platformToIcon(platform) {
   else return nintendoIcon; 
 }
 
+export function getSteamId(game) {
+  game?.stores?.find(x => x.name === "Steam")?.url.split("https://store.steampowered.com/app/")?.[1]?.split("!")?.[0];
+}

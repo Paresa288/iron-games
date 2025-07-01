@@ -1,0 +1,6 @@
+export { default as appStoreIcon } from "./app-store.svg"
+export { default as epicGamesIcon } from "./epic-games.svg"
+export { default as gogIcon } from "./gog.svg"
+export { default as googlePlayIcon } from "./google-play.svg"
+export { default as itchIoIcon } from "./itchio.svg"
+export { default as steamIcon } from "./steam.svg"

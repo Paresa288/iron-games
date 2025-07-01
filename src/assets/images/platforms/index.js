@@ -1,0 +1,5 @@
+export { default as linuxIcon } from "./linux.svg"
+export { default as nintendoIcon } from "./nintendo.svg"
+export { default as playstationIcon } from "./playstation.svg"
+export { default as windowsIcon } from "./windowsPC.svg"
+export { default as xboxIcon } from "./xbox.svg"
