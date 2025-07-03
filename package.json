@@ -12,6 +12,8 @@
   "dependencies": {
     "axios": "^1.10.0",
     "axios-cache-interceptor": "^1.8.0",
+    "chart.js": "^4.5.0",
+    "dompurify": "^3.2.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-player": "^3.0.0",

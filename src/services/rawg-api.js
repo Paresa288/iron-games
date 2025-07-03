@@ -1,6 +1,8 @@
 import axios from "axios";
 import { appStoreIcon, epicGamesIcon, gogIcon, googlePlayIcon, itchIoIcon, steamIcon } from "../assets/images/stores";
 import { nintendoIcon, playstationIcon, xboxIcon } from "../assets/images/platforms";
+import { getSteamId } from "../utils/game";
+import * as CHEAPSHARKApi from "../services/cheapshark-api";
 
 const http = axios.create({
     baseURL: import.meta.env.VITE_RAWG_BASE_URL
@@ -74,17 +76,25 @@ const stores = {
 }
 
 export async function getGame(slug) {
-  const [game, movies, stores] = await Promise.all([
+  const [game, movies, stores, screenshots] = await Promise.all([
     http.get(`/games/${slug}`),
     http.get(`/games/${slug}/movies`),
     http.get(`/games/${slug}/stores`),
+    http.get(`/games/${slug}/screenshots`),
   ])
-  return {
+  const gameDetails = {
     ...parseGame(game),
     description: game.description,
     movies: movies.results,
-    stores: stores.results.map(parseStore), 
+    stores: stores.results.map(parseStore),
+    screenshots: screenshots.results 
   } 
+  gameDetails.steamId = getSteamId(gameDetails)
+
+  const deals = await CHEAPSHARKApi.getDeals(gameDetails.steamId)
+  gameDetails.deals = deals
+  console.log("pablo", gameDetails)
+  return gameDetails;
 }
 
 const parseStore = (store) => {
@@ -111,7 +121,6 @@ const parseGame = (game) => {
         id: platform.id,
       }  
     }),
-    stores: game.stores,
     playTime: game.playtime
   }
 }
