@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"
 
 const http = axios.create({
   baseURL: import.meta.env.VITE_CHEAPSHARK_BASE_URL
@@ -10,7 +10,9 @@ http.interceptors.response.use(
 
 async function getDealDetails(dealId) {
   try {
-    return await http.get(`/deals?id=${dealId}`)
+    const deal = await http.get(`/deals?id=${dealId}`);
+    deal.gameInfo.storeIcon = `https://www.cheapshark.com/img/stores/icons/${parseInt(deal.gameInfo.storeID) - 1}.png`;
+    return deal;
   } catch (error) {
     /* console.error(error) */  
     return null
@@ -21,7 +23,11 @@ async function getGameDeals(gameId) {
   const { deals } = await http.get(`/games`, { params: { id: gameId } });
   /* console.log(deals) */
   if (deals) {
-    const gameDeals = await Promise.all(deals.map((deal) => getDealDetails(deal.dealID)));
+    const gameDeals = await Promise.all(deals.map( async ({ dealID }) => {
+      const deal = await getDealDetails(dealID);
+      if (deal) deal.id = dealID;
+      return deal;
+    }));
     return gameDeals.filter((deal) => deal != null);
   } else return [];
 }

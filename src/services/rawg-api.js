@@ -107,6 +107,7 @@ const parseStore = (store) => {
 
 
 const parseGame = (game) => {
+  console.log("pablo 2", game)
   return {
     id: game.id,
     name: game.name,

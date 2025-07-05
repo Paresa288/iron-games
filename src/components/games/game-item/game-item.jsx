@@ -3,7 +3,7 @@ import { platformToIcon } from "../../../utils/game"
 
 function GameItem({ game }) {
   return (
-      <Link to={`/game-details/${game.slug}`} id="game-card" className="card" style={{width: "18rem"}}>
+      <Link to={`/game-details/${game.slug}`} className="card game-card" style={{width: "18rem"}}>
         <img src={game.bgImage} alt={game.name}></img>
         <div className="card-body">
           {game.platforms.length != 0 && (

@@ -1,3 +1,5 @@
 export { default as GameItem } from "./game-item/game-item"
 export { default as GamesList } from "./games-list/games-list"
 export { default as GameDetails } from "./game-details/game-details"
+export { default as DealsList } from "./deals/deals-list/deals-list"
+export { default as DealItem } from "./deals/deal-item/deal-item"

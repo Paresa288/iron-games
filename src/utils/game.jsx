@@ -11,6 +11,8 @@ export function platformToIcon(platform) {
   else if (platform.includes("mac")) return appleIcon;
 }
 
+
+
 export function getSteamId(game) {
   let steamUrl = game?.stores?.find(x => x.name === "Steam")?.url;
   if (steamUrl) {
