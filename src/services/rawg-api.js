@@ -17,7 +17,7 @@ http.interceptors.response.use(
   (response) => response.data
 )
 
-/* const http = setupCache(instance); */
+
 
 const stores = {
   "1": {
@@ -122,11 +122,25 @@ const parseGame = (game) => {
         id: platform.id,
       }  
     }),
-    playTime: game.playtime
+    playTime: game.playtime,
+    genres: game.genres.map((genre) => {
+      return {
+        id: genre.id,
+        name: genre.name,
+        gamesCount: genre.games_count,
+        x: genre.games_count - Math.floor(Math.random() * genre.games_count),
+        y: genre.games_count - Math.floor(Math.random() * genre.games_count),
+      }
+    }),
   }
 }
 
+export async function listGenres() {
+  const { results } = await http.get("/genres");
+  return console.log("pablo 3", results)
+}
+
 export async function listGames() {
-  const { results } = await http.get("/games")
+  const { results } = await http.get("/games");
   return results.map((game) => parseGame(game))
 }

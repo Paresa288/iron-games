@@ -1,6 +1,7 @@
 import { platformToIcon } from "../../../utils/game";
 import DOMPurify from "dompurify";
 import DealsList from "../deals/deals-list/deals-list";
+import ScatterChartComponent from "../scatter-chart/scatter-chart";
 
 function GameDetails({ game }) {
   return (
@@ -74,12 +75,18 @@ function GameDetails({ game }) {
       <div className="row g-3 mt-4">
         <div className="col-8">
           <div className="p-3 bg-secondary rounded">
-            <h3>Description</h3>
-            <div dangerouslySetInnerHTML={{__html:DOMPurify.sanitize(game.description)}}></div>
+            <div className="p-3 rounded inset-box-shadow">
+              <h3>Description</h3>
+              <div dangerouslySetInnerHTML={{__html:DOMPurify.sanitize(game.description)}}></div>
+            </div>
           </div>
         </div>
         <div className="col-4">
           <div className="p-3 bg-secondary rounded h-100">
+            <div className="p-3 rounded inset-box-shadow">
+              <h3>Genres</h3>
+              <ScatterChartComponent data={game.genres}/>
+            </div>
           </div>
         </div>
       </div>
