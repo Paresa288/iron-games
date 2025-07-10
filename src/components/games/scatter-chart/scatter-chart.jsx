@@ -37,12 +37,6 @@ const colors = [
 function ScatterChartComponent(genres) {
   genres = genres.data;
 
-  useEffect(() => {
-    RAWGApi.listGenres()
-      .then((genres) => console.info(genres))
-      .catch((error) => console.error(error))
-  }, []);
-
   return (
     <ResponsiveContainer width="100%" height={250}>
       <ScatterChart 

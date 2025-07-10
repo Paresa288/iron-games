@@ -1,6 +1,8 @@
 import { http, HttpResponse } from "msw";
 import { setupWorker } from "msw/browser";
 
+let currentUser = localStorage.getItem("currentUser") ? JSON.parse(localStorage.getItem("currentUser")) : null
+
 const baseApiDomain = "http://irongamesmockapilogin.com"
 let users = self.localStorage.getItem("users") ?
   JSON.parse(self.localStorage.getItem("users")) : [];
@@ -22,6 +24,7 @@ const handleUserRegister = http.post(`${baseApiDomain}/users`, async (data) => {
     );
   } else {
     user.id = self.crypto.randomUUID();
+    user.watchedGames = [];
     users.push(user);
     self.localStorage.setItem("users", JSON.stringify(users));
     return HttpResponse.json(user, { status: 201 });
@@ -30,12 +33,13 @@ const handleUserRegister = http.post(`${baseApiDomain}/users`, async (data) => {
 
 const handleUserLogin = http.post(`${baseApiDomain}/login`, async (data) => {
   const { username, password } = await data.request.json();
-  console.log(username, password);
   const user = users.find((registeredUser) => 
     registeredUser.username === username && registeredUser.password === password
   )
   if (user) {
-    return HttpResponse.json(user, { status: 201 });
+    currentUser = user
+    localStorage.setItem("currentUser", JSON.stringify(user))
+    return HttpResponse.json(currentUser, { status: 201 });
   } else {
     return HttpResponse.json(
       {
@@ -49,9 +53,43 @@ const handleUserLogin = http.post(`${baseApiDomain}/login`, async (data) => {
   }
 })
 
+const handleGetUser = http.get(`${baseApiDomain}/profile`, () => {
+  return HttpResponse.json(currentUser || {}, { status: currentUser ? 200 : 404 });
+})
+
+const handleWatchedGames = http.post(`${baseApiDomain}/games/:id/watched`, async (data) => {
+  const game = await data.request.json();
+  
+  if (!currentUser) {
+    return HttpResponse.json(
+      { message: "Unauthorized, please login" },
+      { status: 401 }
+    );
+  }
+
+  const targetGame = currentUser.watchedGames
+    .find((watchedGame) => watchedGame.id === game.id)
+  if (!targetGame) {
+    currentUser.watchedGames.push(game);
+  } else {
+    currentUser.watchedGames = currentUser.watchedGames
+      .filter((watchedGame) => watchedGame.id !== game.id)
+  }  
+  
+
+  localStorage.setItem("currentUser", JSON.stringify(currentUser));
+
+  return HttpResponse.json(
+    currentUser,
+    { status: 201 }
+  );
+})
+
 const worker = setupWorker(
   handleUserLogin,
-  handleUserRegister
+  handleUserRegister,
+  handleGetUser,
+  handleWatchedGames
 );
 
 export default worker;

@@ -93,7 +93,6 @@ export async function getGame(slug) {
 
   const deals = await CHEAPSHARKApi.getDeals(gameDetails.steamId)
   gameDetails.deals = deals
-  console.log("pablo", gameDetails)
   return gameDetails;
 }
 
@@ -107,7 +106,6 @@ const parseStore = (store) => {
 
 
 const parseGame = (game) => {
-  console.log("pablo 2", game)
   return {
     id: game.id,
     name: game.name,
@@ -137,7 +135,7 @@ const parseGame = (game) => {
 
 export async function listGenres() {
   const { results } = await http.get("/genres");
-  return console.log("pablo 3", results)
+  return results
 }
 
 export async function listGames() {

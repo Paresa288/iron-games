@@ -1,25 +1,30 @@
-import { createContext, useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-
+import { createContext, useContext, useEffect, useState } from "react";
+import * as AuthApi from "../services/auth-api"
 const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
-  const [user, setUser] = useState(self.localStorage.getItem("currentUser") ? JSON.parse(self.localStorage.getItem("currentUser")) : undefined );
-  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    AuthApi.profile()
+      .then(setUser)
+  }, []);
 
   const login = (user) => {
-    self.localStorage.setItem("currentUser", JSON.stringify(user));
-    setUser(user);
+    setUser(user)
+  }
+
+  const reloadUser = () => {
+     AuthApi.profile()
+      .then(setUser)
   }
 
   const logout = () => {
-    self.localStorage.removeItem("currentUser");
-    setUser(undefined);
-    navigate("/")
+    setUser(null)
   }
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }} >
+    <AuthContext.Provider value={{ user, login, logout, reloadUser }} >
       {children}
     </AuthContext.Provider>
   );
