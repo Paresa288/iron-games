@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { GameDetailsPage, HomePage } from "./pages";
+import { GameDetailsPage, HomePage, LoginPage, RegisterPage } from "./pages";
 import { Footer, NavBar } from "./components/ui";
 
 function App() {
@@ -10,6 +10,8 @@ function App() {
 
         <Routes>
           <Route index element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/game-details/:gameSlug" element={<GameDetailsPage />} />
         </Routes>
       </main>
