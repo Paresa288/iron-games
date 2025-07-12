@@ -68,17 +68,16 @@ const handleWatchedGames = http.post(`${baseApiDomain}/games/:id/watched`, async
   }
 
   const targetGame = currentUser.watchedGames
-    .find((watchedGame) => watchedGame.id === game.id)
+    ?.find((watchedGame) => watchedGame.id === game.id)
   if (!targetGame) {
     currentUser.watchedGames.push(game);
   } else {
     currentUser.watchedGames = currentUser.watchedGames
       .filter((watchedGame) => watchedGame.id !== game.id)
-  }  
-  
+  }
 
   localStorage.setItem("currentUser", JSON.stringify(currentUser));
-
+  
   return HttpResponse.json(
     currentUser,
     { status: 201 }

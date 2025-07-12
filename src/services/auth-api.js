@@ -21,3 +21,6 @@ export function register(data) {
   return http.post("/users", data);
 }
 
+export function toggleWatched(game) {
+  return http.post(`games/${game.id}/watched`, game)
+}

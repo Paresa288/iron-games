@@ -10,8 +10,9 @@ export function AuthContextProvider({ children }) {
       .then(setUser)
   }, []);
 
-  const login = (user) => {
-    setUser(user)
+  const login = ({ username, password }) => {
+    AuthApi.login(username, password)
+      .then(setUser)
   }
 
   const reloadUser = () => {

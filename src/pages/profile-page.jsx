@@ -1,5 +1,6 @@
 import { PageLayout } from "../components/layouts";
 import { useAuth } from "../contexts/auth-context";
+import { WatchList } from "../components/games";
 
 function ProfilePage() {
   const { user } = useAuth();
@@ -19,7 +20,7 @@ function ProfilePage() {
         <div className="col">
           <div className=" bg-secondary inset-box-shadow p-3">
             <h3>WatchList</h3>
-            
+            <WatchList games={user?.watchedGames} /> 
           </div>
         </div>
       </div>

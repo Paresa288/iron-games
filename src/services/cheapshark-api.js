@@ -33,8 +33,18 @@ async function getGameDeals(gameId) {
 }
 
 export async function getDeals(steamId) {
-
   const games = await http.get(`/games`, { params: { steamAppID: steamId } });
   if (games.length > 0) return getGameDeals(games[0].gameID);
   else return [];
 }
+
+export async function setAlert(email, gameId, price) {
+  const alert = await http.get("/alerts", { params: { action: "set", email: email, gameID: gameId, price: price }})
+  return alert;
+}
+
+export async function deleteAlert(email, gameId, price) {
+  const alert = await http.get("/alerts", { params: { action: "delete", email: email, gameID: gameId, price: price }})
+  return alert;
+}
+
