@@ -3,11 +3,11 @@ import { linuxIcon, nintendoIcon, playstationIcon, windowsIcon, xboxIcon, appleI
 export function platformToIcon(platform) {
   platform = platform.toLowerCase();
 
-  if (platform.includes("playstation")) return playstationIcon;
+  if (platform.includes("play")) return playstationIcon;
   else if (platform.includes("xbox")) return xboxIcon;
-  else if (platform.includes("nintendo")) return nintendoIcon;
+  else if (platform.includes("nint")) return nintendoIcon;
   else if (platform.includes("pc")) return windowsIcon;
-  else if (platform.includes("linux")) return linuxIcon;
+  else if (platform.includes("linu")) return linuxIcon;
   else if (platform.includes("mac")) return appleIcon;
 }
 

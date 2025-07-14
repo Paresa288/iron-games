@@ -12,10 +12,15 @@ function GameItem({ game }) {
     await AuthApi.toggleWatched(fullGame);
     reloadUser();
   }
-
+  
   const isWatched = user?.watchedGames
-    ?.some((watchedGame) => watchedGame.id === game.id ) 
+    ?.some((watchedGame) => watchedGame.id === game.id );
+  
+  const parsePlatforms = game.platforms.map(platform => platform.name.slice(0, 4));
 
+  const uniquePlatforms = parsePlatforms.filter((platform, i) => parsePlatforms.indexOf(platform) === i);
+
+  console.log("1", game.platforms, uniquePlatforms);
   return (
     <div className="card game-card" style={{width: "18rem"}}>
         <img src={game.bgImage} alt={game.name} className="card-img"/>
@@ -25,8 +30,8 @@ function GameItem({ game }) {
         <div className="card-body">
           {game.platforms.length != 0 && (
             <div className="d-flex gap-2 mb-1">
-              {game.platforms.map(( { name }) => (
-                <img key={name}  src={platformToIcon(name)} alt={name} height={15}></img>
+              {uniquePlatforms.map((platform) => (
+                <img key={platform}  src={platformToIcon(platform)} alt={platform} height={15}></img>
               ))}
             </div>
           )}
