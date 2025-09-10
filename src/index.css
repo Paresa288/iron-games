@@ -10,6 +10,8 @@
 
 body {
   font-family: "Oswald", "Roboto", sans-serif;
+  background-image: url(./assets/images/backgrounds/main-bg.jpg);
+  background-position: center;
 }
 
 .card {

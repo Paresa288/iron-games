@@ -1,9 +1,10 @@
 import { http, HttpResponse } from "msw";
 import { setupWorker } from "msw/browser";
 
-let currentUser = localStorage.getItem("currentUser") ? JSON.parse(localStorage.getItem("currentUser")) : null
+let currentUser = localStorage.getItem("currentUser") ? JSON.parse(localStorage.getItem("currentUser")) : null;
 
-const baseApiDomain = "http://irongamesmockapilogin.com"
+const baseApiDomain = "https://irongamesmockapilogin.com";
+
 let users = self.localStorage.getItem("users") ?
   JSON.parse(self.localStorage.getItem("users")) : [];
 

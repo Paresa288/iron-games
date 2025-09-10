@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const http = axios.create({
-  baseURL: "http://irongamesmockapilogin.com"
+  baseURL: "https://irongamesmockapilogin.com"
 });
 
 http.interceptors.response.use(
@@ -22,5 +22,5 @@ export function register(data) {
 }
 
 export function toggleWatched(game) {
-  return http.post(`games/${game.id}/watched`, game)
+  return http.post(`/games/${game.id}/watched`, game)
 }

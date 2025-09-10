@@ -5,7 +5,7 @@ import { Footer, NavBar } from "./components/ui";
 function App() {
   return (
     <>
-      <main className="flex-shrink-0 text-bg-dark bg-gradient">
+      <main className="flex-shrink-0">
         <NavBar />
 
         <Routes>
