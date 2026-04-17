@@ -1,4 +1,4 @@
-import { linuxIcon, nintendoIcon, playstationIcon, windowsIcon, xboxIcon, appleIcon } from "../assets/images/platforms"
+import { linuxIcon, nintendoIcon, playstationIcon, windowsIcon, xboxIcon, appleIcon, androidIcon, psVitaIcon, iOSIcon } from "../assets/images/platforms"
 
 export function platformToIcon(platform) {
   platform = platform.toLowerCase();
@@ -9,6 +9,9 @@ export function platformToIcon(platform) {
   else if (platform.includes("pc")) return windowsIcon;
   else if (platform.includes("linu")) return linuxIcon;
   else if (platform.includes("mac")) return appleIcon;
+  else if (platform.includes("andr")) return androidIcon;
+  else if (platform.includes("ps v")) return psVitaIcon;
+  else if (platform.includes("ios")) return iOSIcon;
 }
 
 

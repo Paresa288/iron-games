@@ -14,14 +14,13 @@ async function getDealDetails(dealId) {
     deal.gameInfo.storeIcon = `https://www.cheapshark.com/img/stores/icons/${parseInt(deal.gameInfo.storeID) - 1}.png`;
     return deal;
   } catch (error) {
-    /* console.error(error) */  
+    console.error(error)  
     return null
   }
 }
 
 async function getGameDeals(gameId) { 
   const { deals } = await http.get(`/games`, { params: { id: gameId } });
-  /* console.log(deals) */
   if (deals) {
     const gameDeals = await Promise.all(deals.map( async ({ dealID }) => {
       const deal = await getDealDetails(dealID);

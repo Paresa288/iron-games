@@ -19,10 +19,9 @@ function GameItem({ game }) {
   const parsePlatforms = game.platforms.map(platform => platform.name.slice(0, 4));
 
   const uniquePlatforms = parsePlatforms.filter((platform, i) => parsePlatforms.indexOf(platform) === i);
-
-  console.log("1", game.platforms, uniquePlatforms);
+  
   return (
-    <div className="card game-card" style={{width: "18rem"}}>
+    <div className="card game-card mx-auto" style={{width: "18rem"}}>
         <img src={game.bgImage} alt={game.name} className="card-img"/>
         <div className="card-img-overlay d-flex justify-content-end">
           {user && ( <i className={`fa fa-certificate ${isWatched ? "active" : ""}`} role="button" style={{ zIndex: 9999 }} onClick={() => handleWatchedToggle()}></i> )}

@@ -10,7 +10,7 @@ function NavbarTop() {
     <PageLayout>
       <nav className="d-flex justify-content-between nav-container">
         <div className="container">
-            <Link to="/" className="navbar-brand">Iron Games</Link>
+            <Link to="/" className="navbar-brand text-danger">Iron Games</Link>
             <button 
               className="navbar-toggler" 
               type="button"
@@ -41,14 +41,6 @@ function NavbarTop() {
               </>
             )}
         </div>
-        {/* <ul className="list-group list-group-flush list-group-horizontal">
-          <li className="list-group-item border border-0 bg-transparent">
-            <NavLink to="/login" className="btn text-light">Login</NavLink>
-          </li>
-          <li className="list-group-item border border-0 bg-transparent">
-            <NavLink to="/register" className="btn text-light">Register</NavLink>
-          </li>
-        </ul> */}
       </nav>
     </PageLayout>
   );

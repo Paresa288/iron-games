@@ -4,7 +4,7 @@ import { PageLayout } from "../components/layouts";
 function LoginPage() {
   return (
     <PageLayout>
-      <h3>Login</h3>
+      <h3 className="text-warning">Login</h3>
       <Login />
     </PageLayout>
   )

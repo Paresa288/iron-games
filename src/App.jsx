@@ -4,8 +4,8 @@ import { Footer, NavBar } from "./components/ui";
 
 function App() {
   return (
-    <>
-      <main className="flex-shrink-0">
+    <div className="d-flex flex-column" style={{ minHeight: '100vh' }}>
+      <main className="flex-grow-1">
         <NavBar />
 
         <Routes>
@@ -15,10 +15,9 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/game/:gameSlug" element={<GameDetailsPage />} />
         </Routes>
-      </main>
-
-      <Footer className="mt-auto" />
-    </>
+      </main> 
+      <Footer />
+    </div>
   );
 }
 

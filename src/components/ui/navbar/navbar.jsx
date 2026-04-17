@@ -9,14 +9,14 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-secondary">
       <div className="container-md">
-        <Link className="navbar-brand fs-1" to="/">
+        <Link className="navbar-brand fs-1 text-warning" to="/">
           IronGames
         </Link>
         <button 
           className="navbar-toggler" 
           type="button" 
           data-bs-toggle="collapse" 
-          data-bs-target="#navbarSupportedContent" 
+          data-bs-target="#main-navbar" 
           aria-controls="navbarSupportedContent" 
           aria-expanded="false" 
           aria-label="Toggle navigation"
@@ -31,8 +31,6 @@ function Navbar() {
               </NavLink>
             </li>
           </ul>
-        </div>
-        <div className="navbar-nav">
           {!user && (
             <>
               <NavLink className="nav-link" aria-current="page" to="/login">Login</NavLink>
