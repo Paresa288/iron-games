@@ -24,9 +24,9 @@ function GameItem({ game }) {
     <div className="card game-card mx-auto" style={{width: "18rem"}}>
         <img src={game.bgImage} alt={game.name} className="card-img"/>
         <div className="card-img-overlay d-flex justify-content-end">
-          {user && ( <i className={`fa fa-certificate ${isWatched ? "active" : ""}`} role="button" style={{ zIndex: 9999 }} onClick={() => handleWatchedToggle()}></i> )}
+          {user && ( <i className={`fa fa-certificate ${isWatched ? "text-warning" : ""}`} role="button" style={{ zIndex: 9999 }} onClick={() => handleWatchedToggle()}/> )}
         </div>
-        <div className="card-body">
+        <div className="card-body" style={{ position: "relative"}}>
           {game.platforms.length != 0 && (
             <div className="d-flex gap-2 mb-1">
               {uniquePlatforms.map((platform) => (
