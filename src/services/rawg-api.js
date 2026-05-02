@@ -17,8 +17,6 @@ http.interceptors.response.use(
   (response) => response.data
 )
 
-
-
 const stores = {
   "1": {
     name: "Steam",
@@ -102,8 +100,6 @@ const parseStore = (store) => {
     url: store.url
   }
 }
-  
-
 
 const parseGame = (game) => {
   return {
@@ -140,5 +136,11 @@ export async function listGenres() {
 
 export async function listGames() {
   const { results } = await http.get("/games");
+  
+  return results.map((game) => parseGame(game))
+}
+
+export async function searchGames( search ) {
+  const { results } = await http.get(`/games?search=${search}`)
   return results.map((game) => parseGame(game))
 }

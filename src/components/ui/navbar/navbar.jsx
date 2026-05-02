@@ -2,13 +2,15 @@ import { Link, NavLink } from "react-router-dom";
 import NavBarBottom from "./navbar-bottom";
 import NavbarTop from "./navbar-top";
 import { useAuth } from "../../../contexts/auth-context";
+import { SearchBar } from "../../games";
+
 
 function Navbar() {
   const { user, logout } = useAuth();
 
   return (
     <nav className="navbar navbar-expand-lg bg-secondary">
-      <div className="container-md">
+      <div className="container-fluid">
         <Link className="navbar-brand fs-1 text-warning" to="/">
           IronGames
         </Link>
@@ -39,12 +41,13 @@ function Navbar() {
           )}
           {user && (
             <>
-              <NavLink className="nav-link" aria-current="page" to="/profile">{user.username}</NavLink>
-                <button className="nav-link btn btn-link" onClick={logout}>
+              <NavLink className="nav-link " aria-current="page" to="/profile">{user.username}</NavLink>
+                <button className="nav-link btn btn-link m-2" onClick={logout}>
                   <i className="fa fa-sign-out" aria-hidden="true"></i>
                 </button>
             </>
           )}
+          <SearchBar/>
         </div>
       </div>
     </nav>

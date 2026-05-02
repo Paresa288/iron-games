@@ -1,8 +1,9 @@
+import { Outlet } from "react-router-dom";
 
-function PageLayout({ children }) {
+function PageLayout() {
   return (
     <div className="container py-3">
-      {children}
+      <Outlet/>
     </div>
   );
 }
